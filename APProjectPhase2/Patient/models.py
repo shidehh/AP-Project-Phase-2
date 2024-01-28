@@ -10,10 +10,17 @@ class PatientInfo(models.Model):
     patient_contact_info = models.CharField(max_length=255)
     patient_password = models.CharField(max_length=255)
 
+
 class PatientHealth(models.Model):
+    INSURANCE_CHOICES = [
+        ('Yes', 'Yes'),
+        ('No', 'No'),
+    ]
+
     patient = models.OneToOneField(PatientInfo, on_delete=models.CASCADE, primary_key=True)
-    patient_age = models.IntegerField()
-    patient_insurance = models.CharField(max_length=255)
+    age = models.IntegerField()
+    insurance = models.CharField(max_length=3, choices=INSURANCE_CHOICES)
+
 
 class PatientAppointment(models.Model):
     patient = models.ForeignKey(PatientInfo, on_delete=models.CASCADE)
