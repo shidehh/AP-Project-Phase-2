@@ -1,6 +1,11 @@
 from django.db import models
 from ClinicAppointmentPharmacy.models import Clinic
 
+'''from django.apps import apps
+
+Clinic = apps.get_model('ClinicAppointmentPharmacy', 'Clinic')'''
+
+
 
 # Create your models here.
 
