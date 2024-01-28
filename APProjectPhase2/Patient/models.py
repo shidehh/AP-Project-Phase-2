@@ -1,7 +1,8 @@
 from django.db import models
 from ClinicAppointmentPharmacy.models import Clinic
-# Create your models here.
 
+
+# Create your models here.
 
 
 class PatientInfo(models.Model):
@@ -20,6 +21,7 @@ class PatientHealth(models.Model):
     patient = models.OneToOneField(PatientInfo, on_delete=models.CASCADE, primary_key=True)
     age = models.IntegerField()
     insurance = models.CharField(max_length=3, choices=INSURANCE_CHOICES)
+
 
 
 class PatientAppointment(models.Model):

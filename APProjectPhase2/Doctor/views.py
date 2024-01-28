@@ -7,6 +7,7 @@ from ClinicAppointmentPharmacy.models import Clinic
 
 DOCTOR_SPECIAL_CODE = 'd7654321_doc*'
 
+
 def enter_code(request):
     if request.method == 'POST':
         code = request.POST.get('code')
@@ -16,6 +17,7 @@ def enter_code(request):
             return JsonResponse({"success": False, "message": "The doctor special code is wrong."})
     else:
         return JsonResponse({"message": "Invalid request method."})
+
 
 def select_each_clinic_info(request, clinic_id):
     if request.method == 'GET':
@@ -33,6 +35,7 @@ def select_each_clinic_info(request, clinic_id):
         return JsonResponse(patient_info, safe=False)
     else:
         return JsonResponse({"message": "Invalid request method."})
+
 
 def select_each_patient_info(request, patient_national_code):
     if request.method == 'GET':
