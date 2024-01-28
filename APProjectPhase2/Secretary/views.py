@@ -3,10 +3,10 @@ from django.http import JsonResponse
 from Patient.models import PatientAppointment
 from ClinicAppointmentPharmacy.models import Clinic
 
-
 # Create your views here.
 
 SECRETARY_SPECIAL_CODE = 's1234567@c'
+
 
 def enter_code(request):
     if request.method == 'POST':
@@ -17,6 +17,7 @@ def enter_code(request):
             return JsonResponse({"success": False, "message": "The secretary special code is wrong."})
     else:
         return JsonResponse({"message": "Invalid request method."})
+
 
 def select_each_clinic_info(request, clinic_id):
     if request.method == 'GET':
