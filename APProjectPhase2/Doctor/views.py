@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import JsonResponse
 from Patient.models import PatientInfo, PatientHealth, PatientAppointment
 from ClinicAppointmentPharmacy.models import Clinic
