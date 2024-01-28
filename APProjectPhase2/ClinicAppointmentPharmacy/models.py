@@ -1,8 +1,7 @@
 # Create your models here.
 import requests
 from django.db import models
-# patients app, PtientInfo corresponds to patient_info table
-from patients.models import PatientInfo
+from Patient.models import PatientInfo
 
 
 class Clinic(models.Model):
