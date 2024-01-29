@@ -1,0 +1,10 @@
+header {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: lightblue;
+}
+
+button {
+    margin: 0 10px;
+}
