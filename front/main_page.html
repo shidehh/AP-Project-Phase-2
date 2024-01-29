@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
-<h1> Hello! please choose one option:</h1>
-<head>
-    <link rel="stylesheet" type="text/css" href="main_page1.css">
-</head>
-<body>
-    <header>
-        <button onclick="window.location.href='Patient_menu.html'">Patient</button>
-        <button onclick="window.location.href='page2.html'">Secretary</button>
-        <button onclick="window.location.href='page3.html'">Doctor</button>
-    </header>
-</body>
+    <head>
+        <title> main page </title>
+        <style>
+            h1 {
+                color: blue;
+                display: flex;
+                justify-content: center;
+                padding: 20px;
+                background-color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <h1> Hello! please choose one option:</h1>
+        <li><a href="Patient_menu.html" target="_blank">Patient</a></li>
+        <li><a href="Secretary_menu.html" target="_blank">Secretary</a></li>
+        <li><a href="Doctor_menu.html" target="_blank">Doctor</a></li>
+    </body>
 </html>
