@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Patient page </title>
+        <title> main page </title>
         <style>
             h1 {
                 color: rgb(95, 196, 141);
@@ -10,6 +10,7 @@
                 padding: 20px;
                 background-color: rgb(96, 26, 146);
             }
+
             .button {
                 display: inline-block;
                 padding: 10px 20px;
@@ -32,11 +33,18 @@
         </style>
     </head>
     <body>
-        <h1> Choose an action:</h1>
-        <li><a href="patient_sign_in.html" target="_blank" class="button">Sign in</a></li>
-        <li><a href="patient_log_in.html" target="_blank" class="button">Log in</a></li>
-        <li><a href="main.html" target="_blank" class="button">Log out</a></li>
-        <!-- <li><a href="patient_clinic_info.html" target="_blank">Clinic info</a></li>
-        <li><a href="patient_patient_info.html" target="_blank">Patient info</a></li> -->
+        <form>
+            <H1>Pharmacy</H1>
+            <label for="lname">Drug name:</label><br>
+            <input type="text" id="lname" name="lname"required><br>
+            <label for="fname">Insurance(yes/no):</label><br>
+            <input type="text" id="fname" name="fname" required><br>
+
+            <a href="patient_afterlogin.html" , class="button">Back </a>
+        
+            <input type="submit"  value="Submit" class="button" href="patient_afterlogin.html">
+        
+            
+        </form>
     </body>
 </html>
