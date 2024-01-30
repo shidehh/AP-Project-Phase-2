@@ -53,36 +53,36 @@ def increase_capacity(request):
         return JsonResponse({"message": "Invalid request method."})
 
 
-def check_patient(request, patient_national_code):
-    if request.method == 'GET':
-        exists = PatientInfo.objects.filter(patient_national_code=patient_national_code).exists()
-        return JsonResponse({"exists": exists})
-    else:
-        return JsonResponse({"message": "Invalid request method."})
-
-def check_insurance(request, patient_national_code):
-    if request.method == 'GET':
-        patient = PatientInfo.objects.get(patient_national_code=patient_national_code)
-        has_insurance = patient.patient_insurance == 'Yes'
-        return JsonResponse({"has_insurance": has_insurance})
-    else:
-        return JsonResponse({"message": "Invalid request method."})
-
-def dispense_drug(request, drug, patient_national_code):
+def pharmacy_view(request):
     if request.method == 'POST':
-        pharmacy = Pharmacy.objects.get(drug_name=drug)
-        if pharmacy.quantity > 0:
-            pharmacy.quantity -= 1
-            pharmacy.save()
-            return JsonResponse({"success": True, "message": "We have your drug in stock.\nThanks for your shopping!"})
-        else:
-            return JsonResponse({"success": False, "message": f"Sorry, {drug} is currently out of stock."})
-    else:
-        return JsonResponse({"message": "Invalid request method."})
+        # Get the drug name from the form data
+        drug = request.POST.get('drug')
 
-def check_availability(request, drug):
-    if request.method == 'GET':
-        available = Pharmacy.objects.filter(drug_name=drug, quantity__gt=0).exists()
-        return JsonResponse({"available": available})
+        # Get the patient from the session
+        patient = PatientInfo.objects.get(national_code=request.session['patient_national_code'])
+
+        # Get the pharmacy
+        pharmacy = Pharmacy.objects.get(id=1)  # Assuming there's only one Pharmacy
+
+        # Check if the drug is in stock
+        if pharmacy.check_availability(drug):
+            # Dispense the drug and update the inventory
+            pharmacy.dispense_drug(drug, patient)
+
+            # Check the patient's insurance status and add the appropriate message
+            if patient.check_insurance():
+                message = 'You have 70 percent discount as you have insurance.'
+            else:
+                message = 'You have to pay full price as you do not have insurance.'
+
+            # Add the success message
+            message += ' We have your drug in stock. Thanks for your shopping!'
+
+            # Return a JsonResponse with the message
+            return JsonResponse({'message': message})
+        else:
+            # Return a JsonResponse with the error message
+            return JsonResponse({'message': f'Sorry, {drug} is currently out of stock.'})
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        # Render the pharmacy page
+        return render(request, 'pharmacy.html')
