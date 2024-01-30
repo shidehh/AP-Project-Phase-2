@@ -1,5 +1,5 @@
 from django.db import models
-from ClinicAppointmentPharmacy.models import Clinic
+from Clinic.models import Clinic
 
 '''from django.apps import apps
 

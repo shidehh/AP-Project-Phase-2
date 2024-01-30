@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from Patient.models import PatientInfo, PatientHealth, PatientAppointment
-from ClinicAppointmentPharmacy.models import Clinic
+from Clinic.models import Clinic
 
 # Create your views here.
 

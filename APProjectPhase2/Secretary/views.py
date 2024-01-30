@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from Patient.models import PatientAppointment
-from ClinicAppointmentPharmacy.models import Clinic
+from Clinic.models import Clinic
 
 # Create your views here.
 

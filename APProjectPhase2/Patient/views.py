@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from ClinicAppointmentPharmacy.models import Clinic
+from Clinic.models import Clinic
 from .models import PatientInfo, PatientAppointment
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
