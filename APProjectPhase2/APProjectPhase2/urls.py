@@ -21,10 +21,10 @@ from django.urls import path
 from django.urls import path, include
 
 urlpatterns = [
-    path('ClinicAppointmentPharmacy/', include('ClinicAppointmentPharmacy.urls')),
+    path('AppointmentPharmacy/', include('AppointmentPharmacy.urls')),
     path('Doctor/', include('Doctor.urls')),
     path('Patient/', include('Patient.urls')),
     path('Secretary/', include('Secretary.urls')),
-    path('clinic/', include('Clinic.urls')),
+    path('Clinic/', include('Clinic.urls')),
     # Add more paths here for more apps
 ]
