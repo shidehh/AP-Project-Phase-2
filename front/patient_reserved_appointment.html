@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <h1>Reserved appointments</h1>
+        <h1>Reserve appointment</h1>
         <title> main page </title>
         <style>
             h1 {
@@ -34,6 +34,13 @@
         </style>
     </head>
 <body>
-    <li><a href="patient_afterlogin.html" target="_blank" class="button">Back</a></li>
+    <label for="fname">Patient nationalcode:</label><br>
+    <input type="text" id="fname" name="fname" required><br>
+    <label for="lname">Clinic ID:</label><br>
+    <input type="text" id="lname" name="lname"required><br>
+    <label for="lname">Number of appointments:</label><br>
+    <input type="text" id="lname" name="lname"required><br>
+    <a href="patient_afterlogin.html" target="_blank" class="button">Back</a>
+    <input type="submit"  value="Submit" class="button" href="patient_afterlogin.html">
 </body>
 </html>
