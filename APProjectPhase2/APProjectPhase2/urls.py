@@ -25,5 +25,6 @@ urlpatterns = [
     path('Doctor/', include('Doctor.urls')),
     path('Patient/', include('Patient.urls')),
     path('Secretary/', include('Secretary.urls')),
+    path('clinic/', include('Clinic.urls')),
     # Add more paths here for more apps
 ]
