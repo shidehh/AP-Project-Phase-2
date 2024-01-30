@@ -12,11 +12,11 @@ def enter_code(request):
     if request.method == 'POST':
         code = request.POST.get('code')
         if code == SECRETARY_SPECIAL_CODE:
-            return JsonResponse({"success": True})
+            return JsonResponse({"success": True},status = 200)
         else:
-            return JsonResponse({"success": False, "message": "The secretary special code is wrong."})
+            return JsonResponse({"success": False, "message": "The secretary special code is wrong."}, status = 400)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)
 
 
 def select_each_clinic_info(request, clinic_id):
@@ -32,6 +32,6 @@ def select_each_clinic_info(request, clinic_id):
             "patient_contact_info": p.patient_contact_info,
             "patient_reserved_appointments": p.patientappointment.reserved
         } for p in patients]
-        return JsonResponse(patient_info, safe=False)
+        return JsonResponse(patient_info, safe=False, status = 200)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)

@@ -19,9 +19,9 @@ def sign_up(request):
         patient.patient_name = name
         patient.patient_contact_info = contact_info
         patient.save()
-        return JsonResponse({"message": "Sign up successfully. Now you need to log in to be able to reserve or cancel an appointment."})
+        return JsonResponse({"message": "Sign up successfully. Now you need to log in to be able to reserve or cancel an appointment."}, status = 201)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)
 
 def log_in(request):
     if request.method == 'POST':
@@ -30,15 +30,15 @@ def log_in(request):
         user = authenticate(request, username=national_code, password=password)
         if user is not None:
             login(request, user)
-            return JsonResponse({"message": "Log in successfully!"})
+            return JsonResponse({"message": "Log in successfully!"}, status = 200)
         else:
-            return JsonResponse({"message": "Invalid national code or password."})
+            return JsonResponse({"message": "Invalid national code or password."}, status = 401)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)
 
 def log_out(request):
     logout(request)
-    return JsonResponse({"message": "You have been logged out."})
+    return JsonResponse({"message": "You have been logged out."}, status = 200)
 
 def select_clinic_capacity_info(request, clinic_id):
     if request.method == 'GET':
@@ -52,7 +52,7 @@ def select_clinic_capacity_info(request, clinic_id):
             "clinic_contact_info": clinic.clinic_contact_info
         })
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)
 
 def select_patient_reserved_appointments_info(request, patient_national_code):
     if request.method == 'GET':
@@ -62,6 +62,6 @@ def select_patient_reserved_appointments_info(request, patient_national_code):
             "patient_national_code": patient.patient_national_code,
             "patient_name": patient.patient_name,
             "appointments": [{"clinic_id": a.clinic.id, "reserved": a.reserved} for a in appointments]
-        })
+        }, status = 200)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)

@@ -22,9 +22,9 @@ def reserve_appointment(request):
             appointment.reserved += int(reserved)
             appointment.save()
 
-        return JsonResponse(result)
+        return JsonResponse(result, status = 200 if result['success'] else 400)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)
 
 def cancel_appointment(request):
     if request.method == 'POST':
@@ -35,9 +35,9 @@ def cancel_appointment(request):
         appointment.reserved -= int(cancelled)
         appointment.save()
 
-        return JsonResponse({"success": True, "message": "Appointment cancelled successfully"})
+        return JsonResponse({"success": True, "message": "Appointment cancelled successfully"}, status = 200)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)
 
 def increase_capacity(request):
     if request.method == 'POST':
@@ -48,25 +48,25 @@ def increase_capacity(request):
         clinic.capacity += int(increase_amount)
         clinic.save()
 
-        return JsonResponse({"success": True, "message": "Clinic capacity increased successfully"})
+        return JsonResponse({"success": True, "message": "Clinic capacity increased successfully"}, status = 200)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)
 
 
 def check_patient(request, patient_national_code):
     if request.method == 'GET':
         exists = PatientInfo.objects.filter(patient_national_code=patient_national_code).exists()
-        return JsonResponse({"exists": exists})
+        return JsonResponse({"exists": exists}, status = 200)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)
 
 def check_insurance(request, patient_national_code):
     if request.method == 'GET':
         patient = PatientInfo.objects.get(patient_national_code=patient_national_code)
         has_insurance = patient.patient_insurance == 'Yes'
-        return JsonResponse({"has_insurance": has_insurance})
+        return JsonResponse({"has_insurance": has_insurance}, status = 200)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)
 
 def dispense_drug(request, drug, patient_national_code):
     if request.method == 'POST':
@@ -74,15 +74,15 @@ def dispense_drug(request, drug, patient_national_code):
         if pharmacy.quantity > 0:
             pharmacy.quantity -= 1
             pharmacy.save()
-            return JsonResponse({"success": True, "message": "We have your drug in stock.\nThanks for your shopping!"})
+            return JsonResponse({"success": True, "message": "We have your drug in stock.\nThanks for your shopping!"}, status = 200)
         else:
-            return JsonResponse({"success": False, "message": f"Sorry, {drug} is currently out of stock."})
+            return JsonResponse({"success": False, "message": f"Sorry, {drug} is currently out of stock."}, status = 200)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, sataus = 405)
 
 def check_availability(request, drug):
     if request.method == 'GET':
         available = Pharmacy.objects.filter(drug_name=drug, quantity__gt=0).exists()
-        return JsonResponse({"available": available})
+        return JsonResponse({"available": available}, status = 200)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)

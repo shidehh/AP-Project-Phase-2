@@ -35,6 +35,6 @@ def update_from_api(request):
                     }
                 )
 
-        return JsonResponse({"message": "Clinic capacities updated successfully."})
+        return JsonResponse({"message": "Clinic capacities updated successfully."}, status = 200)
     else:
-        return JsonResponse({"message": "Invalid request method."})
+        return JsonResponse({"message": "Invalid request method."}, status = 405)
