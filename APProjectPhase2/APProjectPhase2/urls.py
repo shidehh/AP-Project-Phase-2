@@ -24,5 +24,5 @@ urlpatterns = [
     path('Patient/', include('Patient.urls')),
     path('Secretary/', include('Secretary.urls')),
     path('Clinic/', include('Clinic.urls')),
-    path('', TemplateView.as_view(template_name="main_page.html"), name='main_page'),
+    path('', TemplateView.as_view(template_name="main.html"), name='main'),
 ]
