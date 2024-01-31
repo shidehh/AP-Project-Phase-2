@@ -15,10 +15,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
-# myproject/urls.py
-from django.urls import path, include
+from django.urls import path , include
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('AppointmentPharmacy/', include('AppointmentPharmacy.urls')),
@@ -26,5 +24,5 @@ urlpatterns = [
     path('Patient/', include('Patient.urls')),
     path('Secretary/', include('Secretary.urls')),
     path('Clinic/', include('Clinic.urls')),
-    # Add more paths here for more apps
+    path('', TemplateView.as_view(template_name="main_page.html"), name='main_page'),
 ]
