@@ -1,42 +1,76 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title> patient page </title>
-        <style>
+
+<!-- if the data is right, go to the patient_afterlogin, but else, go to patient_sign_up. -->
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
             h1 {
                 color: rgb(95, 196, 141);
-                display: flex;
+                display:flex;
+                text-align: center;
                 justify-content: center;
                 padding: 20px;
                 background-color: rgb(96, 26, 146);
             }
-            .button {
-                display: inline-block;
-                padding: 10px 20px;
-                margin: 5px ;
-                font-size: 16px;
-                text-align: center;
-                text-decoration: none;
-                cursor: pointer;
-                border: 1px solid #3498db;
-                color: #ffffff;
-                background-color: #3498db;
-                border-radius: 5px;
-            }
+
+        .button {
+            display: inline-block;
+            padding: 10px 10px;
+            margin: 5px ;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            color: #ffffff;
+            background-color: #3498db;
+            border-radius: 5px;
+        }
+        .button2 {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px ;
+            font-size: 12px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid #d8d8d8;
+            color: #ffffff;
+            background-color: #0fce0f;
+            border-radius: 73px;
+        }
 
 
-            .button:hover {
-                background-color: #2980b9;
-                border-color: #2980b9;
-            }
-        </style>
-    </head>
-    <body>
-        <h1> Choose an action:</h1>
-        <li><a href="patient_sign_up.html" target="_blank" class="button">Sign up</a></li>
-        <li><a href="patient_log_in.html" target="_blank" class="button">Log in</a></li>
-        <li><a href="main.html" target="_blank" class="button">Log out</a></li>
-        <!-- <li><a href="patient_clinic_info.html" target="_blank">Clinic info</a></li>
-        <li><a href="patient_patient_info.html" target="_blank">Patient info</a></li> -->
-    </body>
+        .button:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+    </style>
+    <script>
+        function submit(){
+            
+        }
+    </script>
+
+</head>
+<body>
+    <form>
+        <H1>Please enter your information for login</H1>
+        <label for="fname">National code:</label><br>
+        <input type="text" id="fname" name="fname" required><br>
+        <label for="lname">One-time password(yes/no):</label><br>
+        <input type="text" id="lname" name="lname"required><br>
+       
+        <a href="patient_page.html" , class="button">Back </a>
+    
+        <input type="submit"  value="Submit" class="button" href="patient_after_login.html">   
+    </form>
+</body>
+<body>
+    <a href="patient_sign_up.html" , class="button2">Want to create an account? </a>
+</body>
 </html>
