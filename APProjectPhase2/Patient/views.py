@@ -3,10 +3,6 @@ from Clinic.models import Clinic
 from .models import PatientInfo, PatientAppointment
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
-from django.core.exceptions import ObjectDoesNotExist
-
-
-# Create your views here.
 
 
 def sign_up(request):
@@ -65,3 +61,6 @@ def select_patient_reserved_appointments_info(request, patient_national_code):
         }, status = 200)
     else:
         return JsonResponse({"message": "Invalid request method."}, status = 405)
+
+
+# the view code with render function : 

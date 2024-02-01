@@ -1,14 +1,6 @@
 from django.db import models
 from Clinic.models import Clinic
 
-'''from django.apps import apps
-
-Clinic = apps.get_model('ClinicAppointmentPharmacy', 'Clinic')'''
-
-
-
-# Create your models here.
-
 
 class PatientInfo(models.Model):
     patient_national_code = models.CharField(max_length=10, primary_key=True)
@@ -19,8 +11,8 @@ class PatientInfo(models.Model):
 
 class PatientHealth(models.Model):
     INSURANCE_CHOICES = [
-        ('Yes', 'Yes'),
-        ('No', 'No'),
+        ('yes', 'yes'),
+        ('no', 'no'),
     ]
 
     patient = models.OneToOneField(PatientInfo, on_delete=models.CASCADE, primary_key=True)
