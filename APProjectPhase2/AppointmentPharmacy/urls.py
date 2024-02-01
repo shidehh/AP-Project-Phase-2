@@ -1,5 +1,5 @@
 from django.urls import path
-from AppointmentPharmacy.views import reserve_appointment, cancel_appointment, increase_capacity, pharmacy_view
+from AppointmentPharmacy.views import reserve_appointment, cancel_appointment, increase_capacity, pharmacy_view,logout_view
 
 # In Django URL patterns, '<str:user_type>/' is a dynamic part of the URL.
 # 'str' indicates that this part of the URL should be interpreted as a string.
@@ -12,4 +12,5 @@ urlpatterns = [
     path('cancel_appointment/<str:user_type>/', cancel_appointment, name='cancel_appointment'),
     path('increase_capacity/', increase_capacity, name='increase_capacity'),
     path('pharmacy/', pharmacy_view, name='pharmacy_view'),
+    path('logout/', logout_view, name='logout'),
 ]
