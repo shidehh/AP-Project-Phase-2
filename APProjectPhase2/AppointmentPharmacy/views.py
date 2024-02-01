@@ -6,20 +6,26 @@ from Patient.models import PatientInfo
 from Clinic.models import Clinic
 # Create your views here.
   
-
 def reserve_appointment(request):
     if request.method == 'POST':
-        appointment_id = request.POST.get('appointment_id')
-        reserved = request.POST.get('reserved')
-        appointment = Appointment.objects.get(id=appointment_id)
+        clinic_id = request.POST.get('clinic_id')
+        number_of_reservations = request.POST.get('number_of_reservations')
+        patient_national_code = request.POST.get('patient_national_code')
 
+        # Get the clinic and patient based on the provided IDs
+        clinic = Clinic.objects.get(id=clinic_id)
+        patient = PatientInfo.objects.get(national_code=patient_national_code)
+
+        # Create a new appointment or get an existing one
+        appointment, created = Appointment.objects.get_or_create(clinic=clinic, patient=patient)
+        
         url = 'http://127.0.0.1:5000/reserve'
-        data = {'id': appointment.clinic.id, 'reserved': reserved}
+        data = {'id': clinic.id, 'reserved': number_of_reservations}
         response = requests.post(url, json=data)
         result = response.json()
 
         if result['success']:
-            appointment.reserved += int(reserved)
+            appointment.reserved += int(number_of_reservations)
             appointment.save()
 
         return JsonResponse(result)
@@ -28,16 +34,24 @@ def reserve_appointment(request):
 
 def cancel_appointment(request):
     if request.method == 'POST':
-        appointment_id = request.POST.get('appointment_id')
-        cancelled = request.POST.get('cancelled')
-        appointment = Appointment.objects.get(id=appointment_id)
+        clinic_id = request.POST.get('clinic_id')
+        number_of_cancellations = request.POST.get('number_of_cancellations')
+        patient_national_code = request.POST.get('patient_national_code')
 
-        appointment.reserved -= int(cancelled)
+        # Get the clinic and patient based on the provided IDs
+        clinic = Clinic.objects.get(id=clinic_id)
+        patient = PatientInfo.objects.get(national_code=patient_national_code)
+
+        # Get the appointment for the clinic and patient
+        appointment = Appointment.objects.get(clinic=clinic, patient=patient)
+
+        appointment.reserved -= int(number_of_cancellations)
         appointment.save()
 
         return JsonResponse({"success": True, "message": "Appointment cancelled successfully"})
     else:
         return JsonResponse({"message": "Invalid request method."})
+
 
 def increase_capacity(request):
     if request.method == 'POST':
