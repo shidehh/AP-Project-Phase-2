@@ -10,8 +10,9 @@ DOCTOR_SPECIAL_CODE = 'd7654321_doc*'
 def enter_code(request):
     if request.method == 'POST':
         code = request.POST.get('code')
+        clinic_id = request.POST.get('clinic_id')
         if code == DOCTOR_SPECIAL_CODE:
-            return render(request, 'doctor_after_login.html')
+            return redirect('select_each_clinic_info', clinic_id=clinic_id)
         else:
             return render(request, 'doctor_page.html', {"message": "The doctor special code is wrong."})
     else:
