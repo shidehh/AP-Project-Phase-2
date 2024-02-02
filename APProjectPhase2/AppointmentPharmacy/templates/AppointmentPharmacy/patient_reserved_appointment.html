@@ -58,6 +58,12 @@
     <input type="text" id="lname" name="lname"required><br>
     <a href="patient_after_login.html" target="_blank" class="button">Back</a>
     <input type="submit"  value="Submit" class="button" href="patient_after_login.html">
-    <a href="main.html" target="_blank" class="button2">Log out</a>
+    <a href="main.html" target="_blank" class="button2">Log out
+    <form
+        action="{% url 'cancel_appointment' %}" method="post">
+        {% csrf_token %}
+        <!-- Rest of your form fields go here -->
+        <input type="submit" value="Submit" class="button">
+    </form>
 </body>
 </html>
