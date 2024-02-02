@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <style>
-            h1 {
-                color: rgb(95, 196, 141);
-                display:flex;
-                text-align: center;
-                justify-content: center;
-                padding: 20px;
-                background-color: rgb(96, 26, 146);
-            }
+        h1 {
+            color: rgb(95, 196, 141);
+            display:flex;
+            text-align: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: rgb(96, 26, 146);
+        }
 
         .button {
             display: inline-block;
@@ -56,13 +56,9 @@
         <H1>Enter patient national code in here:</H1>
         <label for="fname">Patient national code:</label><br>
         <input type="text" id="fname" name="fname" required><br>
-        
-    
        
         <input type="submit"  value="Submit" class="button" href="patient_after_login.html">
-
         <br><a href="doctor_after_login.html" , class="button2">Back </a>
-        <a href="doctor_after_login.html" , class="button2">Log out </a>
     </form>
 </body>
 <script>
@@ -140,7 +136,6 @@
         <input type="text" id="patient_national_code" name="patient_national_code" required><br>
         <input type="submit" value="Submit" class="button">
         <br><a href="{% url 'enter_code' %}" class="button2">Back</a>
-        <a href="{% url 'logout' %}" class="button2">Log out</a>
     </form>
 </body>
 </html>
