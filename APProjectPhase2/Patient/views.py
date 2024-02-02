@@ -58,9 +58,9 @@ def log_in(request):
     else:
         return render(request, 'patient_page.html', {"message": "Invalid request method."})
 
-'''def logout_view(request):
+def logout_view(request):
     logout(request)
-    return redirect('main.html')'''
+    return redirect('main.html')
 
 def select_clinic_capacity_info(request, clinic_id):
     if request.method == 'GET':

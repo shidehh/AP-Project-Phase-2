@@ -101,6 +101,7 @@ def pharmacy_view(request):
     else:
         # Render the pharmacy page
         return render(request, 'Pharmacy.html')
+
 def logout_view(request):
     logout(request)
     return redirect('main.html')

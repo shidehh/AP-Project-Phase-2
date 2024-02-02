@@ -40,6 +40,6 @@ def select_each_clinic_info(request, clinic_id):
     else:
         return render(request, 'secretary_page.html', {"message": "Invalid request method."})
 
-'''def logout_view(request):
+def logout_view(request):
     logout(request)
-    return redirect('main.html')'''
+    return redirect('main.html')
