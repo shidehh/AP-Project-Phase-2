@@ -50,12 +50,14 @@
     </head>
 <body>
     <h2>if you want to cancel an appointment,<br> please fill this form :</h2>
-    <label for="fname">Your national code:</label><br>
-    <input type="text" id="fname" name="fname" required><br>
-    <label for="lname">Clinic ID:</label><br>
-    <input type="text" id="lname" name="lname"required><br>
-    <label for="lname">Number of appointments:</label><br>
-    <input type="text" id="lname" name="lname"required><br>
+    <form action="/cancel_appointment/patient/" method="post">
+        <label for="fname">Your national code:</label><br>
+        <input type="text" id="fname" name="fname" required><br><label for="lname">Clinic ID:</label><br>
+        <input type="text" id="lname" name="lname"required><br>
+        <label for="lname">Number of appointments:</label><br>
+        <input type="text" id="lname" name="lname"required><br>
+        <input type="submit" value="Submit" class="button">
+    </form
     <a href="patient_after_login.html" target="_blank" class="button">Back</a>
     <input type="submit"  value="Submit" class="button" href="patient_after_login.html">
     <a href="main.html" target="_blank" class="button2">Log out</a>
