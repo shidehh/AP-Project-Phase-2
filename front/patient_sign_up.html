@@ -27,6 +27,19 @@
                 border-radius: 5px;
             }
 
+            .button2 {
+                display: inline-block;
+                padding: 8px 18px;
+                margin: 10px ;
+                font-size: 16px;
+                text-align: center;
+                text-decoration: none;
+                cursor: pointer;
+                border: 1px solid #e0d7d2;
+                color: #ffffff;
+                background-color: #b40c0c;
+                border-radius: 5px;
+            }
 
             .button:hover {
                 background-color: #2980b9;
@@ -43,18 +56,16 @@
 <body>
     <form>
         <H1>Please enter your information for sign up</H1>
+        <label for="lname">Name:</label><br>
+        <input type="text" id="lname" name="lname"required><br>
         <label for="fname">National code:</label><br>
         <input type="text" id="fname" name="fname" required><br>
-        <label for="lname">One-time password(yes/no):</label><br>
+        <label for="lname">One-time password(temporary/permanent):</label><br>
         <input type="text" id="lname" name="lname"required><br>
         <label for="lname">Contact:</label><br>
         <input type="text" id="lname" name="lname"required><br>
-        <label for="lname">Insurance(yes/no):</label><br>
-        <input type="text" id="lname" name="lname"required><br>
 
-        
-        <a href="patient_page.html" , class="button">Back </a>
-    
+        <a href="patient_page.html" , class="button2">Back </a>
         <input type="submit"  value="Submit" class="button" href="patient_after_login.html">   
     </form>
 </body>
