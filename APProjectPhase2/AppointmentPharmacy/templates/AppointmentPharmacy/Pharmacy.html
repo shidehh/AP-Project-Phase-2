@@ -44,20 +44,13 @@
         </style>
     </head>
     <body>
-<<<<<<< HEAD
         <form action="/pharmacy" method="POST">
-=======
-        <form> action="{% url 'pharmacy_view' %}" method="post">
-            {% csrf_token %}
->>>>>>> 890e4944a39d1e7c3a333a2beb87cb4f8e84a97f
             <H1>Pharmacy</H1>
             <label for="lname">Drug name:</label><br>
             <input type="text" id="lname" name="lname"required><br>
             <input type="submit"  value="Submit" class="button">
             <a href="patient_after_login.html" , class="button2">Back </a>
             <a href="main.html" target="_blank" class="button2">Log out</a>
-
-            <input type="submit" value="Submit" class="button">
         </form>
     </body>
 </html>
