@@ -16,7 +16,7 @@ def sign_up(request):
         national_code = request.POST.get('national_code')
         name = request.POST.get('name')
         contact_info = request.POST.get('contact_info')
-        password_type = int(request.POST.get('password_type'))
+        password_type = request.POST.get('password_type')
         password = None
         if password_type == 'permanent':
             password = request.POST.get('password')
