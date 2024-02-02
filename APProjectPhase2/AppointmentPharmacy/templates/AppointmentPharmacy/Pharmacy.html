@@ -55,7 +55,10 @@
         
             <input type="submit"  value="Submit" class="button" href="patient_after_login.html">
             <a href="main.html" target="_blank" class="button2">Log out</a>
-        
+            action="{% url 'pharmacy_view' %}" method="post">
+            {% csrf_token %}
+            <!-- Rest of your form fields go here -->
+            <input type="submit" value="Submit" class="button">
             
         </form>
     </body>
