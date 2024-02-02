@@ -1,8 +1,8 @@
-from django.shortcuts import render
+
 import requests
 from django.http import JsonResponse
 from .models import Clinic
-# Create your views here.
+
 def update_from_api(request):
     if request.method == 'GET':
         response = requests.get('http://127.0.0.1:5000/slots')
