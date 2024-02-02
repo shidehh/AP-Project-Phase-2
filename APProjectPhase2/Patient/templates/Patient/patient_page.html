@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<!-- if the data is right, go to the patient_afterlogin, but else, go to patient_sign_up. -->
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+            h1 {
+                color: rgb(95, 196, 141);
+                display:flex;
+                text-align: center;
+                justify-content: center;
+                padding: 20px;
+                background-color: rgb(96, 26, 146);
+            }
+
+        .button {
+            display: inline-block;
+            padding: 10px 10px;
+            margin: 5px ;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            color: #ffffff;
+            background-color: #3498db;
+            border-radius: 5px;
+            }
+            
+        .button2 {
+                display: inline-block;
+                padding: 8px 18px;
+                margin: 10px ;
+                font-size: 16px;
+                text-align: center;
+                text-decoration: none;
+                cursor: pointer;
+                border: 1px solid #e0d7d2;
+                color: #ffffff;
+                background-color: #b40c0c;
+                border-radius: 5px;
+            }
+
+        .button3 {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px ;
+            font-size: 12px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid #d8d8d8;
+            color: #ffffff;
+            background-color: #0fce0f;
+            border-radius: 73px;
+        }
+
+
+        .button:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+    </style>
+    <script>
+        function submit(){
+            
+        }
+    </script>
+
+</head>
+<body>
+    <form action="/login" method="POST">
+        <H1>Please enter your information for login</H1>
+        <label for="fname">National code:</label><br>
+        <input type="text" id="national_code" name="national_code" required><br>
+        <label for="lname">Password:</label><br>
+        <input type="text" id="password" name="password"required><br>
+        <input type="submit"  value="Submit" class="button">  
+        <a href="patient_page.html" , class="button2">Back </a>
+    </form>
+</body>
+<body>
+    <a href="patient_sign_up.html" , class="button3">Want to create an account?<br>click here </a>
+</body>
+</html>
