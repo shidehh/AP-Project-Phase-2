@@ -103,6 +103,6 @@ def pharmacy_view(request):
         return render(request, 'Pharmacy.html')
 def logout_view(request):
     logout(request)
-    return redirect('main_page.html')
+    return redirect('main.html')
 
 
