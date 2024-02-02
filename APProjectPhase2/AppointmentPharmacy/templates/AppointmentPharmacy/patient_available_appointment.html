@@ -59,7 +59,6 @@
     <a href="main.html" target="_blank" class="button2">Log out</a>
     <form action="{% url 'reserve_appointment' %}" method="post">
             {% csrf_token %}
-            <!-- Your existing form fields go here -->
             <input type="submit" value="Submit" class="button">
     </form>
 </body>
