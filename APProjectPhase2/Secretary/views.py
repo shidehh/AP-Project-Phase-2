@@ -1,5 +1,4 @@
-
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from Patient.models import PatientAppointment
 from Clinic.models import Clinic
 from django.contrib.auth import logout
@@ -9,8 +8,9 @@ SECRETARY_SPECIAL_CODE = 's1234567@c'
 def enter_code(request):
     if request.method == 'POST':
         code = request.POST.get('code')
+        clinic_id = request.POST.get('clinic_id')
         if code == SECRETARY_SPECIAL_CODE:
-            return render(request, 'secretary_after_login.html')
+            return redirect('select_each_clinic_info', clinic_id=clinic_id)
         else:
             return render(request, 'secretary_page.html', {"message": "The secretary special code is wrong."})
     else:
