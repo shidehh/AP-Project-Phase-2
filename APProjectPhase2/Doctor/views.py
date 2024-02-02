@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from Patient.models import PatientInfo, PatientHealth, PatientAppointment
 from Clinic.models import Clinic
 from django.contrib.auth import logout
 
-# Create your views here.
+
 
 DOCTOR_SPECIAL_CODE = 'd7654321_doc*'
 
@@ -54,6 +54,6 @@ def select_each_patient_info(request, patient_national_code):
     else:
         return render(request, 'doctor_page.html', {"message": "Invalid request method."})
     
-'''def logout_view(request):
+def logout_view(request):
     logout(request)
-    return redirect('main_page.html')'''
+    return redirect('main.html')

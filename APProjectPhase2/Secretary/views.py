@@ -42,4 +42,4 @@ def select_each_clinic_info(request, clinic_id):
 
 '''def logout_view(request):
     logout(request)
-    return redirect('main_page.html')'''
+    return redirect('main.html')'''

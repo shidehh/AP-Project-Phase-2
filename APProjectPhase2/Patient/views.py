@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from Clinic.models import Clinic
 from .models import PatientInfo, PatientAppointment
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
+from django.contrib.auth.hashers import check_password, make_password
 import string
 import random
 
@@ -17,7 +18,7 @@ def sign_up(request):
         contact_info = request.POST.get('contact_info')
         password_type = int(request.POST.get('password_type'))
         password = None
-        if password_type == 2:
+        if password_type == 'permanent':
             password = request.POST.get('password')
         else:
             password = generate_password(10)  # Generate a temporary password
@@ -32,32 +33,34 @@ def sign_up(request):
 def log_in(request):
     if request.method == 'POST':
         national_code = request.POST.get('national_code')
+        password = request.POST.get('password')
         try:
             user = PatientInfo.objects.get(username=national_code)
         except PatientInfo.DoesNotExist:
             return render(request, 'patient_page.html', {"message": "Patient does not exist. Please sign up."})
         
-        if user.check_password(generate_password(10)):  # Assuming generate_password generates the temporary password
-            print(f"Your temporary password is: {generate_password(10)}")
-            entered_temp_password = input("Please enter the temporary password: ")
-            if entered_temp_password == generate_password(10):
+        # Check if the user chose a temporary password
+        if user.password_type == 'temporary':
+            temp_password = generate_password(10)  # Generate the temporary password once
+            hashed_temp_password = make_password(temp_password)
+            if check_password(password, hashed_temp_password):
                 login(request, user)
-                return render(request, 'patient_after_login.html', {"message": "Log in successfully!"})
+                return render(request, 'patient_temporary.html', {"message": "Log in successfully!"})
             else:
                 return render(request, 'patient_page.html', {"message": "Invalid temporary password."})
         else:
-            password = request.POST.get('password')
+            # Check the permanent password
             if user.check_password(password):
                 login(request, user)
-                return render(request, 'patient_after_login.html', {"message": "Log in successfully!"})
+                return render(request, 'patient_permanent.html', {"message": "Log in successfully!"})
             else:
                 return render(request, 'patient_page.html', {"message": "Invalid password."})
     else:
         return render(request, 'patient_page.html', {"message": "Invalid request method."})
-    
+
 '''def logout_view(request):
     logout(request)
-    return redirect('main_page.html')'''
+    return redirect('main.html')'''
 
 def select_clinic_capacity_info(request, clinic_id):
     if request.method == 'GET':
