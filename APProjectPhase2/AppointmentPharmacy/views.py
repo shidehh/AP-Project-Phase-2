@@ -1,9 +1,8 @@
 
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from .models import Appointment, Pharmacy
 from Clinic.models import Clinic
 from Patient.models import PatientInfo, PatientHealth
-import requests
 from django.contrib.auth import logout
 
 def reserve_appointment(request):
@@ -19,24 +18,15 @@ def reserve_appointment(request):
 
         # Create a new appointment or get an existing one
         appointment, created = Appointment.objects.get_or_create(clinic=clinic, patient=patient)
-        
-        url = 'http://127.0.0.1:5000/reserve'
-        data = {'id': clinic.id, 'reserved': number_of_reservations}
-        response = requests.post(url, json=data)
-        result = response.json()
 
-        if result['success']:
-            appointment.reserved += int(number_of_reservations)
-            appointment.save()
-            if user_type == 'patient':
-                return render(request, 'patient_available_appointment.html', {"message": "Appointment reserved successfully"})
-            else:
-                return render(request, 'secretary_reserve_appointment.html', {"message": "Appointment reserved successfully"})
+        # Update the number of reservations
+        appointment.reserved += int(number_of_reservations)
+        appointment.save()
+
+        if user_type == 'patient':
+            return render(request, 'patient_available_appointment.html', {"message": "Appointment reserved successfully"})
         else:
-            if user_type == 'patient':
-                return render(request, 'patient_available_appointment.html', {"message": "Failed to reserve appointment"})
-            else:
-                return render(request, 'secretary_reserve_appointment.html', {"message": "Failed to reserve appointment"})
+            return render(request, 'secretary_reserve_appointment.html', {"message": "Appointment reserved successfully"})
     else:
         return render(request, 'patient_available_appointment.html', {"message": "Invalid request method."})
 
@@ -54,6 +44,7 @@ def cancel_appointment(request):
         # Get the appointment for the clinic and patient
         appointment = Appointment.objects.get(clinic=clinic, patient=patient)
 
+        # Update the number of reservations
         appointment.reserved -= int(number_of_cancellations)
         appointment.save()
 
@@ -63,7 +54,7 @@ def cancel_appointment(request):
             return render(request, 'secretary_cancel_appointment.html', {"message": "Appointment cancelled successfully"})
     else:
         return render(request, 'patient_reserved_appointment.html', {"message": "Invalid request method."})
-
+    
 def increase_capacity(request):
     if request.method == 'POST':
         clinic_id = request.POST.get('clinic_id')
