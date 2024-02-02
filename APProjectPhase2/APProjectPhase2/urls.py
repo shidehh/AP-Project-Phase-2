@@ -23,6 +23,5 @@ urlpatterns = [
     path('Doctor/', include('Doctor.urls')),
     path('Patient/', include('Patient.urls')),
     path('Secretary/', include('Secretary.urls')),
-    path('Clinic/', include('Clinic.urls')),
     path('', TemplateView.as_view(template_name="main.html"), name='main'),
 ]

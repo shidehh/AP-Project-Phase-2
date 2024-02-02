@@ -27,6 +27,19 @@
                 border-radius: 5px;
             }
 
+            .button2 {
+                display: inline-block;
+                padding: 8px 18px;
+                margin: 10px ;
+                font-size: 16px;
+                text-align: center;
+                text-decoration: none;
+                cursor: pointer;
+                border: 1px solid #e0d7d2;
+                color: #ffffff;
+                background-color: #b40c0c;
+                border-radius: 5px;
+            }
 
             .button:hover {
                 background-color: #2980b9;
@@ -41,21 +54,25 @@
 
 </head>
 <body>
-    <form>
+    <form action="/signup" method="POST">
         <H1>Please enter your information for sign up</H1>
+        <label for="fname">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
         <label for="fname">National code:</label><br>
-        <input type="text" id="fname" name="fname" required><br>
-        <label for="lname">One-time password(yes/no):</label><br>
-        <input type="text" id="lname" name="lname"required><br>
-        <label for="lname">Contact:</label><br>
-        <input type="text" id="lname" name="lname"required><br>
-        <label for="lname">Insurance(yes/no):</label><br>
-        <input type="text" id="lname" name="lname"required><br>
+        <input type="text" id="national_code" name="national_code" required><br>
+        <label for="lname">One-time password(permanent/temporary):</label><br>
+        <input type="text" id="password_type" name="password_type"required><br>
+        <!-- <label for="fname">Age:</label><br>
+        <input type="text" id="fname" name="fname" required><br> -->
+        <label for="lname">Contact info:</label><br>
+        <input type="text" id="contact_info" name="contact_info"required><br>
+        <!-- <label for="lname">Insurance(yes/no):</label><br>
+        <input type="text" id="lname" name="lname"required><br> -->
 
-        
-        <a href="patient_page.html" , class="button">Back </a>
-    
-        <input type="submit"  value="Submit" class="button" href="patient_after_login.html">   
+        <input type="submit"  value="Submit" class="button">  
+        <a href="patient_page.html" , class="button2">Back </a>
     </form>
 </body>
 </html>
+
+

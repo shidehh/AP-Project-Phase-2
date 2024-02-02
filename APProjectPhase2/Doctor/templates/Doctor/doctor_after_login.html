@@ -25,6 +25,19 @@
             border-radius: 5px;
         }
 
+        .button2 {
+                display: inline-block;
+                padding: 8px 18px;
+                margin: 10px ;
+                font-size: 16px;
+                text-align: center;
+                text-decoration: none;
+                cursor: pointer;
+                border: 1px solid #e0d7d2;
+                color: #ffffff;
+                background-color: #b40c0c;
+                border-radius: 5px;
+            }
 
         .button:hover {
             background-color: #2980b9;
@@ -42,14 +55,73 @@
     <form>
         <H1>What you want to do?</H1>
         <li><a href="doctor_patient_see.html" target="_blank" class="button">See a patient</a></li>
-
-
-        
-        <a href="main.html" , class="button">Back </a>
-    
-   
+        <a href="main.html" , class="button2">Back </a>
     </form>
 </body>
 
 
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        h1 {
+            color: rgb(95, 196, 141);
+            display:flex;
+            text-align: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: rgb(96, 26, 146);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 10px;
+            margin: 5px ;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            color: #ffffff;
+            background-color: #3498db;
+            border-radius: 5px;
+        }
+        .button2 {
+            display: inline-block;
+            padding: 8px 18px;
+            margin: 10px ;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid #e0d7d2;
+            color: #ffffff;
+            background-color: #b40c0c;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <H1>What you want to do?</H1>
+    <li><a href="{% url 'select_each_clinic_info' clinic_id=1 %}" target="_blank" class="button">See a patient</a></li>
+    <a href="{% url 'enter_code' %}" class="button2">Back</a>
+    <a href="{% url 'logout' %}" class="button2">Log out</a>
+</body>
 </html>
